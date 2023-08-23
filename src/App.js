@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+//pages
+import AuthPage from "./pages/Authpage/Authpage";
+import NewOrderPage from "./pages/NewOrderPage/NewOrderPage";
+import OrderHistoryPage from "./pages/OrderHistoryPage/OrderHistoryPage";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
+  const [user, setUser] = useState(null);
+  //return fetch("/api/orders/history").then((res) => res.json());
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      {user ? (
+        <Routes>
+          <Route path="/orders/new" element={<NewOrderPage />} />
+          <Route path="/orders" element={<OrderHistoryPage />} />
+        </Routes>
+      ) : (
+        <AuthPage />
+      )}
     </div>
   );
 }
