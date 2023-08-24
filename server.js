@@ -1,9 +1,12 @@
-const express = require("express");
 require("dotenv").config();
+//Require database file functionality
+require("./config/database");
+
+const express = require("express");
 const path = require("path");
 const favicon = require("serve-favicon");
 const logger = require("morgan");
-
+//
 const app = express();
 
 app.use(logger("dev"));
