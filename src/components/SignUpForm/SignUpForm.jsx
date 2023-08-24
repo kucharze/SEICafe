@@ -31,6 +31,7 @@ export default class SignUpForm extends Component {
     }
 
     handleSubmit = (e) =>{
+        e.preventDefault()
         alert(JSON.stringify(this.state))
     }
 
