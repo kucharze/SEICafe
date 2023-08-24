@@ -1,42 +1,42 @@
 import { Component, useState } from "react";
 
 export default function SignUpForm (){
-    const [state, setState] = useState({
-      name: '',
-      email: '',
-      password: '',
-      confirm: '',
-      error: ''
-    })
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirm, setConfirm] = useState('')
+    const [error, setError] = useState('')
 
-    const handleChange = (e) =>{
-        this.setState({
-            [e.target.name]: e.target.value,
-            error: ''
-        });
-    }
+
+    // const handleChange = (e) =>{
+    //     // console.log("changing")
+    //     setState({
+    //         [e.target.name]: e.target.value,
+    //         error: ''
+    //     });
+    // }
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        alert(JSON.stringify(this.state))
+        alert(JSON.stringify({name,email,password,confirm,error}))
     }
 
-    const disable = state.password !== state.confirm;
+    // const disable = state.password !== state.confirm;
     return <div>
                 <div className="form-container">
                      <form autoComplete="off" onSubmit={handleSubmit}>
                      <label>Name</label>
-                     <input type="text" name="name" value={state.name} onChange={handleChange} required />
+                     <input type="text" name="name" value={name} onChange={(e)=>setName(e.target.value)} required />
                      <label>Email</label>
-                     <input type="email" name="email" value={state.email} onChange={handleChange} required />
+                     <input type="email" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} required />
                      <label>Password</label>
-                     <input type="password" name="password" value={state.password} onChange={handleChange} required />
+                     <input type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)} required />
                      <label>Confirm</label>
-                     <input type="password" name="confirm" value={state.confirm} onChange={handleChange} required />
-                     <button type="submit" disabled={disable}>SIGN UP</button>
+                     <input type="password" name="confirm" value={confirm} onChange={(e)=>setConfirm(e.target.value)} required />
+                     <button type="submit" disabled={password !== confirm}>SIGN UP</button>
                      </form>
                  </div>
-                 <p className="error-message">&nbsp;{state.error}</p>
+                 <p className="error-message">&nbsp;{error}</p>
              </div>
 }
 
