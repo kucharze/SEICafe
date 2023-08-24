@@ -1,4 +1,6 @@
-export default class SignUpForm {
+import { Component } from "react";
+
+export default class SignUpForm extends Component {
 
     // constructor(){
     //     super()
@@ -19,6 +21,13 @@ export default class SignUpForm {
         const person = {
             name: this.name
         }
+    }
+
+    handleChange = (e) =>{
+        this.setState({
+            [e.target.name]: e.target.value,
+            error: ''
+        });
     }
 
     render(){
