@@ -30,6 +30,10 @@ export default class SignUpForm extends Component {
         });
     }
 
+    handleSubmit = (e) =>{
+        alert(JSON.stringify(this.state))
+    }
+
     render(){
         const disable = this.state.password !== this.state.confirm;
         return (
