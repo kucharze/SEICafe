@@ -1,6 +1,6 @@
 const create = (req, res) => {
   // Baby step...
-  console.log("Hello");
+  console.log("Body: ", req.body);
   res.json({
     user: {
       name: req.body.name,

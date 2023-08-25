@@ -1,8 +1,8 @@
 import axios from "axios";
 
 // This is the base path of the Express route we'll define
-// const BASE_URL = "http://localhost:3001/api/users";
-const BASE_URL = "/api/users";
+const BASE_URL = "http://localhost:3001/api/users";
+// const BASE_URL = "/api/users";
 
 export async function signUp(userData) {
   // Fetch uses an options object as a second arg to make requests
