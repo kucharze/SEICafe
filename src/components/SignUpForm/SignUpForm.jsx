@@ -7,19 +7,62 @@ export default function SignUpForm (){
     const [confirm, setConfirm] = useState('')
     const [error, setError] = useState('')
 
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: '',
+        confirm: '',
+        error: ''
+    });
 
-    // const handleChange = (e) =>{
-    //     // console.log("changing")
-    //     setState({
-    //         [e.target.name]: e.target.value,
-    //         error: ''
-    //     });
-    // }
 
-    const handleSubmit = (e) =>{
-        e.preventDefault()
-        alert(JSON.stringify({name,email,password,confirm,error}))
+    const handleChange = (e) =>{
+        // console.log("changing")
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+            error: ''
+        });
     }
+
+    const handleSubmit = async (e) =>{
+        e.preventDefault()
+        // alert(JSON.stringify({name,email,password,confirm,error}))
+        //Prevent form from being submitted to the server
+        try {
+            // We don't want to send the 'error' or 'confirm' property,
+            //  so let's make a copy of the state object, then delete them
+            const newFormData = {name,email,password};
+            // delete formData.error;
+            // delete formData.confirm;
+            // console.log("Inside Handle submit")
+            const user = await SignUp(newFormData)
+        } catch (error) {
+            //an error occured
+            setError("Sign up Failed - Try again")
+            // console.error(error)
+        }
+    }
+
+    /*
+    const handleSubmit = async (e) =>  {
+    // Prevent form from being submitted to the server
+    e.preventDefault()
+    try {
+      // We don't want to send the 'error' or 'confirm' property,
+      // so let's make a copy of the state object, then delete them
+      const newFormData = {...formData};
+      delete newFormData.error;
+      delete newFormData.confirm;
+      // or
+      // const {name, email, password} = formData
+      console.log('inside handleSubmit',newFormData)
+    } catch(err) {
+      // An error occurred
+      setFormData({error: 'Sign Up Failed - Try Again'})
+    }
+  }
+    */
 
     // const disable = state.password !== state.confirm;
     return <div>
