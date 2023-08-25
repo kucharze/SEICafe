@@ -1,4 +1,5 @@
 import { Component, useState } from "react";
+import { signUp } from '../../utilities/users-service'
 
 export default function SignUpForm (){
     const [name, setName] = useState('')
@@ -36,7 +37,7 @@ export default function SignUpForm (){
             // delete formData.error;
             // delete formData.confirm;
             // console.log("Inside Handle submit")
-            const user = await SignUp(newFormData)
+            const user = await signUp(newFormData)
         } catch (error) {
             //an error occured
             setError("Sign up Failed - Try again")
