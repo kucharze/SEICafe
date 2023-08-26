@@ -92,7 +92,7 @@ export default class SignUpForm extends Component {
       console.log(user);
     } catch (err) {
       // An error occurred
-      this.setState({ error: "Sign Up Failed - Try Again" });
+      setFormData({...formData, error: 'Sign Up Failed - Try Again'})
     }
   };
 
