@@ -27,7 +27,7 @@ export async function signUp(userData) {
   // Check if request was successful
   if (res.status === 200) {
     // res.json() will resolve to the JWT
-    return res.data.user;
+    return res.data;
   } else {
     throw new Error("Invalid Sign Up");
   }
