@@ -5,7 +5,7 @@ function Authpage({setUser}) {
   return (
     <div>
       <h1>Auth Page Login</h1>
-      <SignUpForm/>
+      <SignUpForm setUser={setUser}/>
       <LoginForm setUser={setUser}/>
     </div>
   )
