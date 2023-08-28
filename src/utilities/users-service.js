@@ -39,7 +39,13 @@ export function logOut() {
   localStorage.removeItem("token");
 }
 
-export function login(credentials) {
+export async function login(credentials) {
   console.log("In user-service");
-  usersAPI.login(credentials);
+  let token = await usersAPI.login(credentials);
+
+  localStorage.setItem("token", token);
+
+  console.log(token);
+
+  return token;
 }

@@ -32,3 +32,23 @@ export async function signUp(userData) {
     throw new Error("Invalid Sign Up");
   }
 }
+
+export async function login(data) {
+  // console.log(data);
+
+  const res = await axios.post(BASE_URL + "/login", data, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  // console.log(res.data);
+
+  if (res.status === 200) {
+    console.log("Good status");
+    return res.data;
+  } else {
+    console.log("Badd status");
+    throw new Error("Invalid log in");
+  }
+}
