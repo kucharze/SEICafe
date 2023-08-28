@@ -14,12 +14,15 @@ function App() {
   //return fetch("/api/orders/history").then((res) => res.json());
   return (
     <div className="App">
-      <Navbar />
       {user ? (
+        <>
+        
+        <Navbar user={user.name} setUser={setUser} />
         <Routes>
           <Route path="/orders/new" element={<NewOrderPage />} />
           <Route path="/orders" element={<OrderHistoryPage />} />
         </Routes>
+        </>
       ) : (
         <AuthPage />
       )}
