@@ -41,7 +41,7 @@ export default function SignUpForm() {
 
   return (
     <div>
-      {console.log(formData)}
+      {/* {console.log(formData)} */}
       <div className="form-container">
         <form autoComplete="off" onSubmit={handleSubmit}>
           <label>Name</label>
