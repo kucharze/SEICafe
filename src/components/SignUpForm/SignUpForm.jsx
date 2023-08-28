@@ -33,6 +33,7 @@ export default function SignUpForm() {
 
       const user = await signUp(newFormData)
       console.log("User:" , user)
+      setFormData({...formData, })
     } catch(err) {
       // An error occurred
       setFormData({...formData, error: 'Sign Up Failed - Try Again'})
