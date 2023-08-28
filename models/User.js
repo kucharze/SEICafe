@@ -23,7 +23,7 @@ const userSchema = new Schema(
     },
   },
   {
-    timestamps: true,
+    timestamps: true, //Tells when the timestamp has been created or last updated
     // Even though it's hashed - don't serialize the password
     toJSON: {
       transform: function (doc, ret) {
@@ -38,6 +38,7 @@ userSchema.pre("save", async function (next) {
   // 'this' is the user doc
   if (!this.isModified("password")) return next();
   // update the password with the computed hash
+  //Use salt rounds for the number of rounds to adjust it
   this.password = await bcrypt.hash(this.password, SALT_ROUNDS);
   return next();
 });
