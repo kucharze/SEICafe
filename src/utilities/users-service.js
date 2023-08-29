@@ -50,5 +50,6 @@ export async function login(credentials) {
 }
 
 export async function checkToken() {
-  alert("Clicked in checkedtoken");
+  // alert("Clicked in checkedtoken");
+  return usersAPI.checkToken().then((dateStr) => new Date(dateStr));
 }
