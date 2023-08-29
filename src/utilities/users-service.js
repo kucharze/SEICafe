@@ -9,7 +9,8 @@ export async function signUp(userData) {
   //Persist the token in local storage
   localStorage.setItem("token", token);
 
-  return token;
+  // return token;
+  return getUser();
 }
 
 //Grab token from local storage
@@ -40,12 +41,12 @@ export function logOut() {
 }
 
 export async function login(credentials) {
-  console.log("In user-service");
   let token = await usersAPI.login(credentials);
 
   localStorage.setItem("token", token);
 
   console.log(token);
 
-  return token;
+  return getUser();
+  //return token
 }
