@@ -20,7 +20,7 @@ export function getToken() {
   if (!token) return null;
   // Obtain the payload of the token
   const payload = JSON.parse(atob(token.split(".")[1]));
-  console.log(payload);
+  //console.log(payload);
   // A JWT's exp is expressed in seconds, not milliseconds, so convert
   if (payload.exp < Date.now() / 1000) {
     // Token has expired - remove it from localStorage
@@ -45,8 +45,10 @@ export async function login(credentials) {
 
   localStorage.setItem("token", token);
 
-  console.log(token);
-
   return getUser();
   //return token
+}
+
+export async function checkToken() {
+  alert("Clicked in checkedtoken");
 }

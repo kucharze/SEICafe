@@ -4,14 +4,13 @@ const bycrypt = require("bcrypt");
 
 const create = async (req, res) => {
   // Baby step...
-  console.log("Body: ", req.body);
+  //console.log("Body: ", req.body);
   // res.json(req.body);
 
   try {
     const user = await User.create(req.body);
     const token = createJWT(user);
 
-    console.log("token printing");
     res.json(token);
   } catch (error) {
     // console.log(error);
@@ -21,18 +20,16 @@ const create = async (req, res) => {
 
 const signIn = async (req, res) => {
   try {
-    console.log("Body for login", req.body);
+    //console.log("Body for login", req.body);
 
     const user = await User.findOne({ email: req.body.email });
     console.log("Did we find one??", user);
 
     if (!user) {
       //Did not find a user
-      // console.log("No user found");
       res.status(400).json({ msg: err.message, reason: "Bad Credentials" });
     }
     const match = await bycrypt.compare(req.body.password, user.password);
-    // console.log("match is ", match);
 
     if (match) {
       console.log("Good sign in");
@@ -41,7 +38,6 @@ const signIn = async (req, res) => {
     } else {
       console.log("Bad sign in");
       throw new Error();
-      // console.log("Bad sign in");
       // res.status(400).json({ msg: error.message, reason: "Bad Credentials" });
     }
   } catch (error) {
