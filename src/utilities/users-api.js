@@ -34,12 +34,14 @@ export async function signUp(userData) {
 }
 
 export async function login(data) {
+  //Send data to backend to try a login
   const res = await axios.post(`${BASE_URL}/login`, data, {
     headers: {
       "Content-Type": "application/json",
     },
   });
 
+  //Did the login work??
   if (res.status === 200) {
     return res.data;
   } else {
