@@ -1,9 +1,11 @@
 import React from 'react'
+import { checkToken } from '../../utilities/users-service'
 
 function OrderHistoryPage() {
 
   const handleCheckToken = async () =>{
-    alert("Clicked")
+    const expDate = await checkToken()
+    console.log(expDate)
   }
   return (
     <>
