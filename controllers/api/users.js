@@ -29,7 +29,7 @@ const signIn = async (req, res) => {
     if (!user) {
       //Did not find a user
       console.log("No user found");
-      res.status(400).json(error);
+      res.status(400).json({ msg: err.message, reason: "Bad Credentials" });
     }
     const match = await bycrypt.compare(req.body.password, user.password);
     console.log("match is ", match);
@@ -40,12 +40,12 @@ const signIn = async (req, res) => {
       res.json(token);
     } else {
       console.log("Bad sign in");
-      return res.status(400).json({ errors: [{ msg: "Invalid credentials" }] });
+      res.status(400).json({ msg: error.message, reason: "Bad Credentials" });
     }
 
     // res.json("Bad sign in");
   } catch (error) {
-    res.status(400).json(error);
+    res.status(400).json({ msg: error.message, reason: "Bad Credentials" });
   }
 };
 
