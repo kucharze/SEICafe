@@ -8,7 +8,9 @@ function Authpage({setUser}) {
   return (
     <main>
       <div>
-        <button onClick={()=>{setShowLogin(!showLogin)}}>{showLogin? 'Sign up' : 'Login'}</button>
+        <button onClick={()=>{setShowLogin(!showLogin)}}>
+          {showLogin? 'Sign up' : 'Login'}
+          </button>
         {
           showLogin ? <LoginForm setUser={setUser} /> : <SignUpForm setUser={setUser}/>
           
