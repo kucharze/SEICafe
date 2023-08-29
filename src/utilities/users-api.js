@@ -40,13 +40,9 @@ export async function login(data) {
     },
   });
 
-  // console.log(res.data);
-
   if (res.status === 200) {
-    console.log("Good status");
     return res.data;
   } else {
-    console.log("Badd status");
     throw new Error("Invalid Login");
   }
 }
