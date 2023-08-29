@@ -34,9 +34,7 @@ export async function signUp(userData) {
 }
 
 export async function login(data) {
-  // console.log(data);
-
-  const res = await axios.post(BASE_URL + "/login", data, {
+  const res = await axios.post(`${BASE_URL}/login`, data, {
     headers: {
       "Content-Type": "application/json",
     },
@@ -49,6 +47,6 @@ export async function login(data) {
     return res.data;
   } else {
     console.log("Badd status");
-    throw new Error("Invalid log in");
+    throw new Error("Invalid Login");
   }
 }
