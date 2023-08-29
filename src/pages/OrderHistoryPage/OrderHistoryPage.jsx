@@ -1,10 +1,15 @@
 import React from 'react'
 
 function OrderHistoryPage() {
+
+  const handleCheckToken = async () =>{
+    alert("Clicked")
+  }
   return (
-    <div>
+    <>
       <h1>Order History page</h1>
-    </div>
+      <button onClick={handleCheckToken}>Check when my login expires</button>
+    </>
   )
 }
 
