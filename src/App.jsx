@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { getUser } from './utilities/users-service';
-import "./App.css";
+import styles from "./App.module.css";
 
 //pages
 import AuthPage from "./pages/Authpage/Authpage";
@@ -13,7 +13,7 @@ function App() {
   const [user, setUser] = useState(getUser());
   //return fetch("/api/orders/history").then((res) => res.json());
   return (
-    <div className="App">
+    <div className={styles.App}>
       {user ? (
         <>
         
