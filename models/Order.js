@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const itemSchema = require("./ItemSchema");
+const itemSchema = require("./Itemschema");
 
 const lineItemSchema = new Schema(
   {
@@ -31,10 +31,12 @@ const orderSchema = new Schema(
 );
 
 orderSchema.virtual("orderTotal").get(function () {
+  //Calculate the price from line items
   return this.lineItems.reduce((total, item) => total + item.extPrice, 0);
 });
 
 orderSchema.virtual("totalQty").get(function () {
+  //Calcualte the total quanity from line items
   return this.lineItems.reduce((total, item) => total + item.qty, 0);
 });
 
