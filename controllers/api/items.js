@@ -6,6 +6,7 @@ module.exports = {
 };
 
 async function index(req, res) {
+  //Grab all items
   try {
     const items = await Item.find({}).sort("name").populate("category").exec();
     // re-sort based upon the sortOrder of the categories
@@ -17,6 +18,7 @@ async function index(req, res) {
 }
 
 async function show(req, res) {
+  //Grab a specific item
   try {
     const item = await Item.findById(req.params.id);
     res.status(200).json(item);
