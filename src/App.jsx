@@ -17,7 +17,7 @@ function App() {
       {user ? (
         <>
         
-        <Navbar user={user.name} setUser={setUser} />
+        {/* <Navbar user={user.name} setUser={setUser} /> */}
         <Routes>
           <Route path="/orders/new" element={<NewOrderPage user={user} setUser={setUser} />} />
           <Route path="/orders" element={<OrderHistoryPage user={user} setUser={setUser} />} />
